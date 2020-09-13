@@ -167,7 +167,7 @@ class Application(tk.Frame):
             errorMsg += '・認証がされていません。\n'
         if not selectionIndex :
             errorMsg += '・リストが選択されていません。\n'
-        if (self.opt1 or self.opt2):
+        if not (self.opt1.get() or self.opt2.get()):
             errorMsg += '・出力内容がありません。\n'
         if not any(self.opts2):
             errorMsg += '・CSV出力内容がありません。\n'
