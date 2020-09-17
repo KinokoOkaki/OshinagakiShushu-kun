@@ -38,7 +38,7 @@ def getMember(consumer_key, consumer_secret, access_token_key, access_token_secr
     return res.member_count
 
 #検索メソッド
-def searchTweet(consumer_key, consumer_secret, access_token_key, access_token_secret, list_index, searchDate, isFolder, csvOption, progress):
+def searchTweet(consumer_key, consumer_secret, access_token_key, access_token_secret, list_index, searchDate, isFolder, csvOption, progress, dir):
     #認証
     api=authTwitter(consumer_key, consumer_secret, access_token_key, access_token_secret)
     ress = api.lists_all()
@@ -54,7 +54,7 @@ def searchTweet(consumer_key, consumer_secret, access_token_key, access_token_se
     print()
 
 
-    csvPath=os.path.dirname(__file__) + '/tweet_list.csv'
+    csvPath = dir + '/tweet_list.csv'
     if csvOption[0]:
         with open(csvPath,'a',encoding="utf_8_sig")as f:
             writer = csv.writer(f)
@@ -101,10 +101,10 @@ def searchTweet(consumer_key, consumer_secret, access_token_key, access_token_se
                             response=requests.get(url,stream=True)
                             if response.status_code==200:
                                 if isFolder[1]:
-                                    os.makedirs(os.path.dirname(__file__) + '/' +name,exist_ok=True)
-                                    path=os.path.dirname(__file__) + '/' +name+'/oshinagaki'+str(i)+'-'+str(j)+'.jpg'
+                                    os.makedirs(dir + '/' +name,exist_ok=True)
+                                    path=dir + '/' +name+'/oshinagaki'+str(i)+'-'+str(j)+'.jpg'
                                 else:
-                                    path=os.path.dirname(__file__) + '/' +name+str(i)+'-'+str(j)+'.jpg'
+                                    path=dir + '/' +name+str(i)+'-'+str(j)+'.jpg'
                                     #ファイル書き込み
                                 with open(path,'wb') as file:
                                     file.write(response.content)

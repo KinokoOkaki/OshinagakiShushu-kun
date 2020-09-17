@@ -7,6 +7,8 @@ import calendar
 from tkinter import messagebox
 import threading
 import circlePostion
+import os
+import tkinter.filedialog
 
 consumer_key = 'EWZEu7RBUhJ4nfy9fawZ1tTWc'
 consumer_secret = 'hlyr7GPr4F1969wY5XEGutrXj00DHEbgO50ZiEKjOMFQJd7H4V'
@@ -66,6 +68,13 @@ class Application(tk.Frame):
         self.frame = ttk.Frame(self.outputOptionFrame, padding=10, relief='groove')
         self.csvFrame = ttk.Frame(self.outputOptionFrame, padding=10, relief='groove')
 
+        self.dirButton = tk.Button(self.outputOptionFrame, text='保存先ディレクトリ', command=self.file_open)
+        self.dirButton.pack()
+        self.directory = tk.StringVar()
+        self.directory.set(str(os.path.dirname(__file__)))
+        self.dirEntry = tk.Entry(self.outputOptionFrame, textvariable=self.directory,width=80)
+        self.dirEntry.pack()
+
         self.opt1=tk.BooleanVar()
         self.opt2=tk.BooleanVar()
         self.opt1.set(True)
@@ -93,6 +102,11 @@ class Application(tk.Frame):
             tmp = tk.Checkbutton(self.csvFrame, text = self.optionStr[i], variable = self.opts2[i])
             tmp.grid(row=int(i/2), column=i%2)
             self.detailsCsvs.append(tmp)
+
+#ディレクトリを指定するためのウィンドウを表示する関数
+    def file_open(self):
+        ret = tk.filedialog.askdirectory(initialdir = os.path.dirname(__file__), title = "保存先", mustexist = True)
+        self.directory.set(str(ret))
 
 #検索期間を指定するウィジェットを配置する関数
     def searchPeriodWidgets(self):
@@ -173,6 +187,8 @@ class Application(tk.Frame):
             errorMsg += '・CSV出力内容がありません。\n'
         if datetime.datetime.today() < datetime.datetime(int(self.ySpinBox.get()), int(self.mSpinBox.get()), int(self.dSpinBox.get())):
             errorMsg += '・検索期間を現在より先にすることはできません。\n'
+        if self.directory.get() == "":
+            errorMsg += '・保存先を設定してください'
         if not errorMsg == '':
             self.showError(errorMsg)
             return
@@ -283,6 +299,7 @@ class oauthWindow(tk.Frame):
         self.top.destroy()
         app.getLists()
 
+#進捗をプログレスバーで表示
 class progressWindow(tk.Frame):
     def __init__(self, master):
         self.top=tk.Toplevel(master)
