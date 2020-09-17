@@ -204,7 +204,8 @@ class Application(tk.Frame):
                                                                             datetime.datetime(int(self.ySpinBox.get()), int(self.mSpinBox.get()), int(self.dSpinBox.get())),
                                                                             [self.opt1, self.opts],
                                                                             [self.opt2, self.opts2],
-                                                                            self.progress)])
+                                                                            self.progress,
+                                                                            str(self.directory.get()))],)
         progressThread.start()
         searchThread.start()
 
@@ -241,7 +242,7 @@ class Application(tk.Frame):
 #CSV出力の詳細オプションの表示・非表示を切り替える関数
     def detailsCsv(self):
         if self.csvOutput.instate(['selected']):
-            for i in range(4):
+            for i in range(len(self.optionStr)):
                 tmp = tk.Checkbutton(self.csvFrame, text = self.optionStr[i], variable = self.opts2[i])
                 tmp.grid(row=int(i/2), column=i%2)
                 self.detailsCsvs.append(tmp)

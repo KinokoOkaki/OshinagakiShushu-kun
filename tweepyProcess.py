@@ -87,7 +87,7 @@ def searchTweet(consumer_key, consumer_secret, access_token_key, access_token_se
         i=i+1
         #ツイート取得　ツイートに「お品書き」が含まれている、かつ画像が添付されているもの
         for tweet in tweepy.Cursor(api.user_timeline,id=member.id, since_id=1189931802908954625).items():
-            if ('お品書き' in tweet.text or 'おしながき' in tweet.text or 'お' in tweet.text) and not('RT' in tweet.text) :
+            if ('お品書き' in tweet.text or 'おしながき' in tweet.text) and not('RT' in tweet.text) :
                 if(searchDate > tweet.created_at):
                     break
                 #print(tweet)

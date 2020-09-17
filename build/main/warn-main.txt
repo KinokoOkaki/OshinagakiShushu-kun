@@ -14,10 +14,6 @@ Types if import:
 IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
            yourself tracking down the missing module. Thanks!
 
-missing module named _posixsubprocess - imported by subprocess (optional), multiprocessing.util (delayed)
-missing module named pwd - imported by posixpath (delayed, conditional), shutil (optional), tarfile (optional), pathlib (delayed, conditional, optional), http.server (delayed, optional), webbrowser (delayed), netrc (delayed, conditional), getpass (delayed)
-missing module named posix - imported by os (conditional, optional), shutil (conditional)
-missing module named resource - imported by posix (top-level)
 missing module named org - imported by copy (optional)
 missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional), zipimport (top-level)
 excluded module named _frozen_importlib - imported by importlib (optional), importlib.abc (optional), zipimport (top-level)
@@ -39,12 +35,16 @@ missing module named urllib.quote_plus - imported by urllib (conditional), reque
 missing module named urllib.urlencode - imported by urllib (optional), oauthlib.common (optional), oauthlib.oauth1.rfc5849.endpoints.authorization (optional), requests.compat (conditional)
 missing module named urllib.unquote - imported by urllib (optional), oauthlib.common (optional), requests.compat (conditional)
 missing module named urllib.quote - imported by urllib (optional), oauthlib.common (optional), requests.compat (conditional), oauthlib.oauth2.rfc6749.utils (optional)
+missing module named posix - imported by os (conditional, optional), shutil (conditional)
+missing module named resource - imported by posix (top-level)
 missing module named grp - imported by shutil (optional), tarfile (optional), pathlib (delayed)
+missing module named pwd - imported by posixpath (delayed, conditional), shutil (optional), tarfile (optional), pathlib (delayed, conditional, optional), http.server (delayed, optional), webbrowser (delayed), netrc (delayed, conditional), getpass (delayed)
 missing module named _scproxy - imported by urllib.request (conditional)
 missing module named multiprocessing.get_context - imported by multiprocessing (top-level), multiprocessing.pool (top-level), multiprocessing.managers (top-level), multiprocessing.sharedctypes (top-level)
 missing module named multiprocessing.TimeoutError - imported by multiprocessing (top-level), multiprocessing.pool (top-level)
 missing module named multiprocessing.BufferTooShort - imported by multiprocessing (top-level), multiprocessing.connection (top-level)
 missing module named multiprocessing.AuthenticationError - imported by multiprocessing (top-level), multiprocessing.connection (top-level)
+missing module named _posixsubprocess - imported by subprocess (optional), multiprocessing.util (delayed)
 missing module named multiprocessing.set_start_method - imported by multiprocessing (top-level), multiprocessing.spawn (top-level)
 missing module named multiprocessing.get_start_method - imported by multiprocessing (top-level), multiprocessing.spawn (top-level)
 missing module named pandas - imported by openpyxl.compat.numbers (optional), openpyxl.cell.cell (optional)
